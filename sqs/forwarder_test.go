@@ -2,6 +2,7 @@ package sqs
 
 import (
 	"errors"
+	"strings"
 	"testing"
 
 	"github.com/AirHelp/rabbit-amazon-forwarder/config"
@@ -52,6 +53,13 @@ func TestPush(t *testing.T) {
 			err:     errors.New(badRequest),
 		},
 		{
+			name:    "too large request",
+			mock:    mockAmazonSQS{resp: sqs.SendMessageOutput{MessageId: aws.String("messageId")}, queue: queueName, message: generateLargeMessage()},
+			message: generateLargeMessage(),
+			queue:   queueName,
+			err:     nil,
+		},
+		{
 			name:    "success",
 			mock:    mockAmazonSQS{resp: sqs.SendMessageOutput{MessageId: aws.String("messageId")}, queue: queueName, message: "abc"},
 			message: "abc",
@@ -94,4 +102,11 @@ func (m mockAmazonSQS) SendMessage(input *sqs.SendMessageInput) (*sqs.SendMessag
 		return nil, errors.New(badRequest)
 	}
 	return &m.resp, nil
+}
+func generateLargeMessage() string {
+	var sb strings.Builder
+	for i := 0; i < 262500; i++ {
+		sb.WriteString("a")
+	}
+	return sb.String()
 }

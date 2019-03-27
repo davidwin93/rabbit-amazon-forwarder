@@ -2,6 +2,7 @@ package sqs
 
 import (
 	"errors"
+
 	log "github.com/sirupsen/logrus"
 
 	"github.com/AirHelp/rabbit-amazon-forwarder/config"
@@ -46,6 +47,11 @@ func (f Forwarder) Name() string {
 func (f Forwarder) Push(message string) error {
 	if message == "" {
 		return errors.New(forwarder.EmptyMessageError)
+	}
+	if len(message) > 262144 {
+		log.WithFields(log.Fields{
+			"forwarderName": f.Name()}).Error("Message Too Large")
+		return nil
 	}
 	params := &sqs.SendMessageInput{
 		MessageBody: aws.String(message), // Required
