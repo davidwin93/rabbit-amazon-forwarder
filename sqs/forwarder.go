@@ -11,11 +11,23 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/sqs"
 	"github.com/aws/aws-sdk-go/service/sqs/sqsiface"
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promauto"
 )
 
 const (
 	// Type forwarder type
 	Type = "SQS"
+)
+
+var (
+	msgForwarded = promauto.NewCounterVec(
+		prometheus.CounterOpts{
+			Name: "mb_rf_forwarded_messages_total",
+			Help: "The total number of forwarded messages",
+		},
+		[]string{"status"},
+	)
 )
 
 // Forwarder forwarding client
@@ -51,6 +63,7 @@ func (f Forwarder) Push(message string) error {
 	if len(message) > 262144 {
 		log.WithFields(log.Fields{
 			"forwarderName": f.Name()}).Error("Message Too Large")
+		msgForwarded.WithLabelValues("too_large").Inc()
 		return nil
 	}
 	params := &sqs.SendMessageInput{
@@ -64,8 +77,10 @@ func (f Forwarder) Push(message string) error {
 		log.WithFields(log.Fields{
 			"forwarderName": f.Name(),
 			"error":         err.Error()}).Error("Could not forward message")
+		msgForwarded.WithLabelValues("error").Inc()
 		return err
 	}
+	msgForwarded.WithLabelValues("ok").Inc()
 	log.WithFields(log.Fields{
 		"forwarderName": f.Name(),
 		"responseID":    resp.MessageId}).Info("Forward succeeded")

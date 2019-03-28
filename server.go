@@ -1,11 +1,13 @@
 package main
 
 import (
-	"github.com/AirHelp/rabbit-amazon-forwarder/mapping"
-	"github.com/AirHelp/rabbit-amazon-forwarder/supervisor"
-	log "github.com/sirupsen/logrus"
 	"net/http"
 	"os"
+
+	"github.com/AirHelp/rabbit-amazon-forwarder/mapping"
+	"github.com/AirHelp/rabbit-amazon-forwarder/supervisor"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	log "github.com/sirupsen/logrus"
 )
 
 const (
@@ -25,6 +27,7 @@ func main() {
 	}
 	http.HandleFunc("/restart", supervisor.Restart)
 	http.HandleFunc("/health", supervisor.Check)
+	http.Handle("/metrics", promhttp.Handler())
 	log.Info("Starting http server")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

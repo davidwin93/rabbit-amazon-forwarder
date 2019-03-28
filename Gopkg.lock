@@ -2,7 +2,7 @@
 
 
 [[projects]]
-  digest = "1:73c2c04ab63401fddec29dc221b1af00051c40a685b3acf5afd23325d7e29543"
+  digest = "1:6eb5bc42828234e307f526451952cf1322e44cb8453354bcc7ae549b8482d5a2"
   name = "github.com/aws/aws-sdk-go"
   packages = [
     "aws",
@@ -46,6 +46,14 @@
   version = "v1.14.7"
 
 [[projects]]
+  branch = "master"
+  digest = "1:d6afaeed1502aa28e80a4ed0981d570ad91b2579193404256ce672ed0a609e0d"
+  name = "github.com/beorn7/perks"
+  packages = ["quantile"]
+  pruneopts = "UT"
+  revision = "3a771d992973f24aa725d07868b467d1ddfceafb"
+
+[[projects]]
   digest = "1:fb46255681497314debedde38b64be32a75bae50bad107586c22f1662bf2d352"
   name = "github.com/go-ini/ini"
   packages = ["."]
@@ -54,7 +62,15 @@
   version = "v1.37.0"
 
 [[projects]]
-  digest = "1:da7a0665d373e11bbc9d5f2015ce01cc8aa610ebf38de553e056f8b65c87243a"
+  digest = "1:318f1c959a8a740366fce4b1e1eb2fd914036b4af58fbd0a003349b305f118ad"
+  name = "github.com/golang/protobuf"
+  packages = ["proto"]
+  pruneopts = "UT"
+  revision = "b5d812f8a3706043e23a9cd5babf2e5423744d30"
+  version = "v1.3.1"
+
+[[projects]]
+  digest = "1:a1038ef593beb4771c8f0f9c26e8b00410acd800af5c6864651d9bf160ea1813"
   name = "github.com/hpcloud/tail"
   packages = [
     ".",
@@ -75,7 +91,15 @@
   revision = "0b12d6b5"
 
 [[projects]]
-  digest = "1:b1fc68069736db92aefa48adf2dcb7e16d23d13425c8ae80ca600281f7d711b3"
+  digest = "1:ff5ebae34cfbf047d505ee150de27e60570e8c394b3b8fdbb720ff6ac71985fc"
+  name = "github.com/matttproud/golang_protobuf_extensions"
+  packages = ["pbutil"]
+  pruneopts = "UT"
+  revision = "c12348ce28de40eed0136aa2b644d0ee0650e56c"
+  version = "v1.0.1"
+
+[[projects]]
+  digest = "1:42e29deef12327a69123b9cb2cb45fee4af5c12c2a23c6e477338279a052703f"
   name = "github.com/onsi/ginkgo"
   packages = [
     ".",
@@ -102,7 +126,7 @@
   version = "v1.6.0"
 
 [[projects]]
-  digest = "1:c4a34ca1d26b1d08ba9199b3c187f9c0b090042b7bdb4e5bf9ad76078a3593ac"
+  digest = "1:29f294e6a3b9d30629266b2765a8c203056387941e600405b8e8871c84653042"
   name = "github.com/onsi/gomega"
   packages = [
     ".",
@@ -121,6 +145,53 @@
   pruneopts = "UT"
   revision = "b6ea1ea48f981d0f615a154a45eabb9dd466556d"
   version = "v1.4.1"
+
+[[projects]]
+  digest = "1:ef03fb1dae4d010196652653f00a8002e94c19bcabdc8ca5100a804ffef63a47"
+  name = "github.com/prometheus/client_golang"
+  packages = [
+    "prometheus",
+    "prometheus/internal",
+    "prometheus/promauto",
+    "prometheus/promhttp",
+  ]
+  pruneopts = "UT"
+  revision = "505eaef017263e299324067d40ca2c48f6a2cf50"
+  version = "v0.9.2"
+
+[[projects]]
+  branch = "master"
+  digest = "1:2d5cd61daa5565187e1d96bae64dbbc6080dacf741448e9629c64fd93203b0d4"
+  name = "github.com/prometheus/client_model"
+  packages = ["go"]
+  pruneopts = "UT"
+  revision = "fd36f4220a901265f90734c3183c5f0c91daa0b8"
+
+[[projects]]
+  digest = "1:35cf6bdf68db765988baa9c4f10cc5d7dda1126a54bd62e252dbcd0b1fc8da90"
+  name = "github.com/prometheus/common"
+  packages = [
+    "expfmt",
+    "internal/bitbucket.org/ww/goautoneg",
+    "model",
+  ]
+  pruneopts = "UT"
+  revision = "cfeb6f9992ffa54aaa4f2170ade4067ee478b250"
+  version = "v0.2.0"
+
+[[projects]]
+  branch = "master"
+  digest = "1:c31163bd62461e0c5f7ddc7363e39ef8d9e929693e77b5c11c709b05f9cb9219"
+  name = "github.com/prometheus/procfs"
+  packages = [
+    ".",
+    "internal/util",
+    "iostats",
+    "nfs",
+    "xfs",
+  ]
+  pruneopts = "UT"
+  revision = "55ae3d9d557340b5bc24cd8aa5f6fa2c2ab31352"
 
 [[projects]]
   digest = "1:9e9193aa51197513b3abcb108970d831fbcf40ef96aa845c4f03276e1fa316d2"
@@ -148,7 +219,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:6bab46a020b433450836f84254204364dbce7da8fd944a8c2c40e294b4160826"
+  digest = "1:c8678feb43230c4aabd02a59d175235875b34741a915261f7eadd0a0a550a384"
   name = "golang.org/x/net"
   packages = [
     "html",
@@ -160,7 +231,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:b33745a6adfa9879da2f5bd8450cea94c78041b00cf1a9d3bab7bf2f1769d3dd"
+  digest = "1:f454baa55ae9d6bf2c301b816662e5352ef71177a8d1eabeb73a08d6ab42888f"
   name = "golang.org/x/sys"
   packages = [
     "unix",
@@ -170,7 +241,7 @@
   revision = "8883426083c04a2627e6e59d84d5f6fb63d16c91"
 
 [[projects]]
-  digest = "1:00b52d21f87065cee85096f07ba40957cc53719145c224da5f5d113669868213"
+  digest = "1:aa4d6967a3237f8367b6bf91503964a77183ecf696f1273e8ad3551bb4412b5f"
   name = "golang.org/x/text"
   packages = [
     "encoding",
@@ -234,6 +305,9 @@
     "github.com/aws/aws-sdk-go/service/sqs/sqsiface",
     "github.com/onsi/ginkgo",
     "github.com/onsi/gomega",
+    "github.com/prometheus/client_golang/prometheus",
+    "github.com/prometheus/client_golang/prometheus/promauto",
+    "github.com/prometheus/client_golang/prometheus/promhttp",
     "github.com/sirupsen/logrus",
     "github.com/streadway/amqp",
   ]
